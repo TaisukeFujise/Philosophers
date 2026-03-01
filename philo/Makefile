@@ -6,7 +6,7 @@
 #    By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/27 04:38:53 by tafujise          #+#    #+#              #
-#    Updated: 2026/02/28 16:13:41 by tafujise         ###   ########.fr        #
+#    Updated: 2026/03/01 20:56:33 by tafujise         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ SRCS:=main.c\
 	utils/ft_atol.c\
 	utils/ft_isdigit.c\
 	utils/ft_isspace.c\
+	init/init.c\
+	init/parse.c\
 	
 
 HEADERS:=philo.h\
