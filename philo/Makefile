@@ -6,7 +6,7 @@
 #    By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/27 04:38:53 by tafujise          #+#    #+#              #
-#    Updated: 2026/09/11 03:49:21 by tafujise         ###   ########.fr        #
+#    Updated: 2026/09/11 04:39:24 by tafujise         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRCS:=main.c\
 	utils/ft_isspace.c\
 	utils/ft_strlen.c\
 	init/init.c\
-	init/parse.c
+	init/parse.c\
+	destroy/destroy.c
 
 HEADERS:=include/philo.h
 

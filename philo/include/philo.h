@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:25 by tafujise          #+#    #+#             */
-/*   Updated: 2026/03/02 00:00:16 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/11 04:49:23 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,12 @@ size_t					ft_strlen(const char *str);
 int						init_ctx(t_ctx *ctx);
 /* parse.c */
 int						parse_args(int argc, char **argv, t_config *config);
+
+// <destory>
+/* destroy.c */
+void	destroy_mutex(t_ctx *ctx);
+void	destroy_fork_mutex(int num_of_philo, pthread_mutex_t *fork_mutex);
+void	destroy_philo(int num_of_philo, t_philo *philo);
+void	destroy_ctx(t_ctx *ctx);
 
 #endif
