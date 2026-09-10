@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 20:57:42 by tafujise          #+#    #+#             */
-/*   Updated: 2026/03/02 00:35:06 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/11 01:47:18 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	free_fork_mutex(int num_of_philo, pthread_mutex_t *fork_mutex)
 	i = 0;
 	while (i < num_of_philo)
 	{
-		pthread_mutex_destroy(fork_mutex);
+		pthread_mutex_destroy(&fork_mutex[i]);
 		i++;
 	}
 	free(fork_mutex);

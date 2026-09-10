@@ -40,7 +40,7 @@ DEBUG_FLAGS:=-g -O0
 # Ubuntu コンテナに入ってから make する:
 #
 #     docker compose build           # 初回のみ
-#     docker compose run --rm dev    # /workspace/philo に入る
+#     docker compose run --rm philo_dev   # /workspace/philo に入る
 #
 # mac 上で直接叩くと次の制約に当たる:
 #   - valgrind / helgrind が存在しない (arm64 mac では実質使えない)
