@@ -18,35 +18,35 @@ void	destroy_mutex(t_ctx *ctx)
 	pthread_mutex_destroy(&ctx->print_mutex);
 }
 
-void	destroy_fork_mutex(int num_of_philo, pthread_mutex_t *fork_mutex)
+void	destroy_fork_mutex(t_ctx *ctx, int count)
 {
 	int	i;
 
 	i = 0;
-	while (i < num_of_philo)
+	while (i < count)
 	{
-		pthread_mutex_destroy(&fork_mutex[i]);
+		pthread_mutex_destroy(&ctx->fork_mutex[i]);
 		i++;
 	}
-	free(fork_mutex);
+	free(ctx->fork_mutex);
 }
 
-void	destroy_philo(int num_of_philo, t_philo *philo)
+void	destroy_philo(t_ctx *ctx, int count)
 {
 	int	i;
 
 	i = 0;
-	while (i < num_of_philo)
+	while (i < count)
 	{
-		pthread_mutex_destroy(&philo[i].last_meal_time_mutex);
+		pthread_mutex_destroy(&ctx->philo[i].last_meal_time_mutex);
 		i++;
 	}
-	free(philo);
+	free(ctx->philo);
 }
 
 void	destroy_ctx(t_ctx *ctx)
 {
 	destroy_mutex(ctx);
-	destroy_fork_mutex(ctx->config.num_of_philo, ctx->fork_mutex);
-	destroy_philo(ctx->config.num_of_philo, ctx->philo);
+	destroy_fork_mutex(ctx, ctx->config.num_of_philo);
+	destroy_philo(ctx, ctx->config.num_of_philo);
 }

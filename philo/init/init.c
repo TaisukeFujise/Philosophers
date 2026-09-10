@@ -26,7 +26,7 @@ int	init_ctx(t_ctx *ctx)
 			FAILURE);
 	if (_init_philo(ctx) == FAILURE)
 		return (destroy_mutex(ctx),
-			destroy_fork_mutex(ctx->config.num_of_philo, ctx->fork_mutex),
+			destroy_fork_mutex(ctx, ctx->config.num_of_philo),
 			FAILURE);
 	return (SUCCESS);
 }
@@ -52,7 +52,7 @@ int _init_fork_mutex(t_ctx *ctx) {
 	while (i < ctx->config.num_of_philo)
 	{
 		if (pthread_mutex_init(&ctx->fork_mutex[i], NULL) != 0)
-			return (destroy_fork_mutex(i, ctx->fork_mutex),
+			return (destroy_fork_mutex(ctx, i),
 				put_error("fork mutex init failed"));
 		i++;
 	}
@@ -74,7 +74,7 @@ int	_init_philo(t_ctx *ctx)
 		ctx->philo[i].last_meal_time = 0;
 		ctx->philo[i].ctx = ctx;
 		if (pthread_mutex_init(&ctx->philo[i].last_meal_time_mutex, NULL) != 0)
-			return (destroy_philo(i, ctx->philo),
+			return (destroy_philo(ctx, i),
 				put_error("last_meal_time mutex init failed"));
 		i++;
 	}

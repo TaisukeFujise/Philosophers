@@ -80,8 +80,8 @@ int						parse_args(int argc, char **argv, t_config *config);
 // <destory>
 /* destroy.c */
 void	destroy_mutex(t_ctx *ctx);
-void	destroy_fork_mutex(int num_of_philo, pthread_mutex_t *fork_mutex);
-void	destroy_philo(int num_of_philo, t_philo *philo);
+void	destroy_fork_mutex(t_ctx *ctx, int count);
+void	destroy_philo(t_ctx *ctx, int count);
 void	destroy_ctx(t_ctx *ctx);
 
 #endif

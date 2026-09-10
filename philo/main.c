@@ -13,7 +13,7 @@
 #include "philo.h"
 
 int	create_philo_threads(t_ctx *ctx);
-int	join_philo_threads(t_ctx *ctx);
+int	join_philo_threads(t_ctx *ctx, int count);
 
 void	*philo_action(void *arg)
 {
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (create_philo_threads(&ctx) == FAILURE)
 		return (destroy_ctx(&ctx), 1);
-	if (join_philo_threads(&ctx) == FAILURE)
+	if (join_philo_threads(&ctx, ctx.config.num_of_philo) == FAILURE)
 		return (destroy_ctx(&ctx), 1);
 	usleep(1000000);
 	printf("happy");
@@ -58,13 +58,13 @@ int	create_philo_threads(t_ctx *ctx)
 	return (SUCCESS);
 }
 
-int	join_philo_threads(t_ctx *ctx)
+int	join_philo_threads(t_ctx *ctx, int count)
 {
 	int	i;
 	int	err;
 
 	i = 0;
-	while (i < ctx->config.num_of_philo)
+	while (i < count)
 	{
 		err = pthread_join(ctx->philo[i].tid, NULL);
 		printf("tid = %lu\n", ctx->philo[i].tid);
