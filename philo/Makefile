@@ -6,7 +6,7 @@
 #    By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/27 04:38:53 by tafujise          #+#    #+#              #
-#    Updated: 2026/09/11 00:35:08 by tafujise         ###   ########.fr        #
+#    Updated: 2026/09/11 03:49:21 by tafujise         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,22 +14,24 @@
 NAME:=philo
 
 SRCS:=main.c\
+	utils/errors.c\
 	utils/ft_atoi.c\
 	utils/ft_atol.c\
 	utils/ft_isdigit.c\
 	utils/ft_isspace.c\
+	utils/ft_strlen.c\
 	init/init.c\
-	init/parse.c\
-	
+	init/parse.c
 
-HEADERS:=philo.h\
+HEADERS:=include/philo.h
 
 OBJDIR:=obj
 OBJS:=$(addprefix $(OBJDIR)/,$(SRCS:%.c=%.o))
 
 CC:=cc
 
-CFLAGS:=-Wall -Wextra -Werror -pthread
+# -Iinclude: 各 .c が階層に依らず #include "philo.h" で解決できるようにする。
+CFLAGS:=-Wall -Wextra -Werror -pthread -Iinclude
 
 DEBUG_FLAGS:=-g -O0
 

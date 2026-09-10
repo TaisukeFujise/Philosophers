@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/11 03:51:56 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/11 03:51:56 by tafujise         ###   ########.fr       */
+/*   Created: 2026/09/11 02:58:52 by tafujise          #+#    #+#             */
+/*   Updated: 2026/09/11 03:55:25 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_isspace(int c)
-{
-	return (c == ' ' || ((unsigned int)c - '\t' < 5));
+size_t	ft_strlen(const char *str) {
+	size_t	i;
+
+	i = 0;
+	while (str[i]) {
+		i++;
+	}
+	return i;
 }

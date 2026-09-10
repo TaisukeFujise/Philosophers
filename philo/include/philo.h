@@ -58,12 +58,18 @@ struct					s_ctx
 };
 
 // <utils>
+/* errors.c */
+int						put_error(const char *msg);
 /* ft_atoi.c */
 int						ft_atoi(const char *nptr);
-/* ft_is_digit.c */
+/* ft_atol.c */
+long					ft_atol(char *nptr);
+/* ft_isdigit.c */
 int						ft_isdigit(int c);
 /* ft_isspace.c */
 int						ft_isspace(int c);
+/* ft_strlen.c */
+size_t					ft_strlen(const char *str);
 
 // <init>
 /* init.c */

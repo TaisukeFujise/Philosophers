@@ -10,20 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "philo.h"
 
 int		init_fork_mutex(t_ctx *ctx);
 int		init_philo(t_ctx *ctx);
 void	free_fork_mutex(int num_of_philo, pthread_mutex_t *fork_mutex);
+void	free_philo(int num_of_philo, t_philo *philo);
 
 int	init_ctx(t_ctx *ctx)
 {
 	ctx->is_dead = false;
 	if (pthread_mutex_init(&ctx->dead_mutex, NULL) != 0)
-		return (perror("dead_mutex init"), FAILURE);
+		return (put_error("dead_mutex init failed"));
 	if (pthread_mutex_init(&ctx->print_mutex, NULL) != 0)
-		return (perror("print_mutex init"),
-			pthread_mutex_destroy(&ctx->dead_mutex), FAILURE);
+		return (pthread_mutex_destroy(&ctx->dead_mutex),
+			put_error("print_mutex init failed"));
 	if (init_fork_mutex(ctx) == FAILURE)
 		return (pthread_mutex_destroy(&ctx->dead_mutex),
 			pthread_mutex_destroy(&ctx->print_mutex), FAILURE);
@@ -42,12 +43,13 @@ int	init_fork_mutex(t_ctx *ctx)
 	ctx->fork_mutex = malloc(sizeof(pthread_mutex_t)
 			* ctx->config.num_of_philo);
 	if (ctx->fork_mutex == NULL)
-		return (FAILURE);
+		return (put_error("malloc failed: fork mutexes"));
 	i = 0;
 	while (i < ctx->config.num_of_philo)
 	{
 		if (pthread_mutex_init(&ctx->fork_mutex[i], NULL) != 0)
-			return (free_fork_mutex(i, ctx->fork_mutex), FAILURE);
+			return (free_fork_mutex(i, ctx->fork_mutex),
+				put_error("fork mutex init failed"));
 		i++;
 	}
 	return (SUCCESS);
@@ -56,11 +58,10 @@ int	init_fork_mutex(t_ctx *ctx)
 int	init_philo(t_ctx *ctx)
 {
 	int	i;
-	int	j;
 
 	ctx->philo = malloc(sizeof(t_philo) * ctx->config.num_of_philo);
 	if (ctx->philo == NULL)
-		return (FAILURE);
+		return (put_error("malloc failed: philosophers"));
 	i = 0;
 	while (i < ctx->config.num_of_philo)
 	{
@@ -69,15 +70,8 @@ int	init_philo(t_ctx *ctx)
 		ctx->philo[i].last_meal_time = 0;
 		ctx->philo[i].ctx = ctx;
 		if (pthread_mutex_init(&ctx->philo[i].last_meal_time_mutex, NULL) != 0)
-		{
-			j = 0;
-			while (j < i)
-			{
-				pthread_mutex_destroy(&ctx->philo[j].last_meal_time_mutex);
-				j++;
-			}
-			return (FAILURE);
-		}
+			return (free_philo(i, ctx->philo),
+				put_error("last_meal_time mutex init failed"));
 		i++;
 	}
 	return (SUCCESS);
@@ -94,4 +88,17 @@ void	free_fork_mutex(int num_of_philo, pthread_mutex_t *fork_mutex)
 		i++;
 	}
 	free(fork_mutex);
+}
+
+void	free_philo(int num_of_philo, t_philo *philo)
+{
+	int	i;
+
+	i = 0;
+	while (i < num_of_philo)
+	{
+		pthread_mutex_destroy(&philo[i].last_meal_time_mutex);
+		i++;
+	}
+	free(philo);
 }
