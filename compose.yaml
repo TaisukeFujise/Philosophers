@@ -1,0 +1,18 @@
+services:
+  dev:
+    build: .
+    # 42 のクラスタは x86_64 なので、厳密に合わせたい時だけ有効化する。
+    # エミュレーションになるので普段は無効のままでよい。
+    # platform: linux/amd64
+    security_opt:
+      # ThreadSanitizer は起動時に personality(ADDR_NO_RANDOMIZE) を呼ぶ。
+      # Docker の既定 seccomp がこれを塞ぐため、外さないと TSan が即死する。
+      - seccomp:unconfined
+    cap_add:
+      # gdb で動作中プロセスにアタッチするために必要。
+      - SYS_PTRACE
+    volumes:
+      - .:/workspace
+    working_dir: /workspace/philo
+    tty: true
+    stdin_open: true
