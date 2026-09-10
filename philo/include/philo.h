@@ -49,7 +49,7 @@ typedef struct s_philo
 struct					s_ctx
 {
 	t_config			config;
-	int					start_time;
+	long				start_time;
 	bool				is_dead;
 	pthread_mutex_t		dead_mutex;
 	pthread_mutex_t		print_mutex;

@@ -22,8 +22,7 @@ int	init_ctx(t_ctx *ctx)
 	if (_init_mutex(ctx) == FAILURE)
 		return (FAILURE);
 	if (_init_fork_mutex(ctx) == FAILURE)
-		return (destroy_mutex(ctx),
-			FAILURE);
+		return (destroy_mutex(ctx), FAILURE);
 	if (_init_philo(ctx) == FAILURE)
 		return (destroy_mutex(ctx),
 			destroy_fork_mutex(ctx, ctx->config.num_of_philo),
@@ -31,21 +30,22 @@ int	init_ctx(t_ctx *ctx)
 	return (SUCCESS);
 }
 
-int _init_mutex(t_ctx *ctx)
+int	_init_mutex(t_ctx *ctx)
 {
 	if (pthread_mutex_init(&ctx->dead_mutex, NULL) != 0)
-		return (put_error("dead_mutext init failed"));
+		return (put_error("dead_mutex init failed"));
 	if (pthread_mutex_init(&ctx->print_mutex, NULL) != 0)
 		return (pthread_mutex_destroy(&ctx->dead_mutex),
 			put_error("print_mutex init failed"));
 	return (SUCCESS);
 }
 
-int _init_fork_mutex(t_ctx *ctx) {
+int	_init_fork_mutex(t_ctx *ctx)
+{
 	int	i;
 
 	ctx->fork_mutex = malloc(sizeof(pthread_mutex_t)
-			*ctx->config.num_of_philo);
+			* ctx->config.num_of_philo);
 	if (ctx->fork_mutex == NULL)
 		return (put_error("malloc failed: fork mutexes"));
 	i = 0;
@@ -69,7 +69,7 @@ int	_init_philo(t_ctx *ctx)
 	i = 0;
 	while (i < ctx->config.num_of_philo)
 	{
-		ctx->philo[i].philo_id = i;
+		ctx->philo[i].philo_id = i + 1;
 		ctx->philo[i].eat_count = 0;
 		ctx->philo[i].last_meal_time = 0;
 		ctx->philo[i].ctx = ctx;

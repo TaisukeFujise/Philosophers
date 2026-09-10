@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:21 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/11 05:09:43 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/11 07:08:40 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,17 @@ int	main(int argc, char **argv)
 int	create_philo_threads(t_ctx *ctx)
 {
 	int	i;
-	int	err;
 
 	i = 0;
 	while (i < ctx->config.num_of_philo)
 	{
-		err = pthread_create(&ctx->philo[i].tid, NULL, philo_action,
-				&ctx->philo[i]);
-		if (err != 0)
-			return (FAILURE);
+		if (pthread_create(&ctx->philo[i].tid, NULL, philo_action,
+				&ctx->philo[i]) != 0)
+		{
+			set_dead(ctx);
+			join_philo_threads(ctx, i);
+			return (put_error("pthread_create failed"));
+		}
 		i++;
 	}
 	return (SUCCESS);
@@ -61,16 +63,15 @@ int	create_philo_threads(t_ctx *ctx)
 int	join_philo_threads(t_ctx *ctx, int count)
 {
 	int	i;
-	int	err;
+	int	result;
 
 	i = 0;
+	result = SUCCESS;
 	while (i < count)
 	{
-		err = pthread_join(ctx->philo[i].tid, NULL);
-		printf("tid = %lu\n", ctx->philo[i].tid);
-		if (err != 0)
-			return (FAILURE);
+		if (pthread_join(ctx->philo[i].tid, NULL) != 0)
+			result = put_error("pthread_join failed");
 		i++;
 	}
-	return (SUCCESS);
+	return (result);
 }
