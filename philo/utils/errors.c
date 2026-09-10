@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-int	put_error(const char *msg)
+int	print_error(const char *msg)
 {
 	write(2, "philo: ", 7);
 	write(2, msg, ft_strlen(msg));

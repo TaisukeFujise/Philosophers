@@ -59,7 +59,7 @@ struct					s_ctx
 
 // <utils>
 /* errors.c */
-int						put_error(const char *msg);
+int						print_error(const char *msg);
 /* ft_atoi.c */
 int						ft_atoi(const char *nptr);
 /* ft_atol.c */
@@ -82,7 +82,7 @@ int						parse_args(int argc, char **argv, t_config *config);
 void					set_dead(t_ctx *ctx);
 bool					get_dead(t_ctx *ctx);
 /* philo_state.c */
-void					set_eat_count(t_philo *philo);
+void					add_eat_count(t_philo *philo);
 int						get_eat_count(t_philo *philo);
 void					set_last_meal_time(t_philo *philo, int time_ms);
 int						get_last_meal_time(t_philo *philo);

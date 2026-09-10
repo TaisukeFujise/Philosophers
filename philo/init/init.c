@@ -33,10 +33,10 @@ int	init_ctx(t_ctx *ctx)
 int	_init_mutex(t_ctx *ctx)
 {
 	if (pthread_mutex_init(&ctx->dead_mutex, NULL) != 0)
-		return (put_error("dead_mutex init failed"));
+		return (print_error("dead_mutex init failed"));
 	if (pthread_mutex_init(&ctx->print_mutex, NULL) != 0)
 		return (pthread_mutex_destroy(&ctx->dead_mutex),
-			put_error("print_mutex init failed"));
+			print_error("print_mutex init failed"));
 	return (SUCCESS);
 }
 
@@ -47,13 +47,13 @@ int	_init_fork_mutex(t_ctx *ctx)
 	ctx->fork_mutex = malloc(sizeof(pthread_mutex_t)
 			* ctx->config.num_of_philo);
 	if (ctx->fork_mutex == NULL)
-		return (put_error("malloc failed: fork mutexes"));
+		return (print_error("malloc failed: fork mutexes"));
 	i = 0;
 	while (i < ctx->config.num_of_philo)
 	{
 		if (pthread_mutex_init(&ctx->fork_mutex[i], NULL) != 0)
 			return (destroy_fork_mutex(ctx, i),
-				put_error("fork mutex init failed"));
+				print_error("fork mutex init failed"));
 		i++;
 	}
 	return (SUCCESS);
@@ -65,7 +65,7 @@ int	_init_philo(t_ctx *ctx)
 
 	ctx->philo = malloc(sizeof(t_philo) * ctx->config.num_of_philo);
 	if (ctx->philo == NULL)
-		return (put_error("malloc failed: philosophers"));
+		return (print_error("malloc failed: philosophers"));
 	i = 0;
 	while (i < ctx->config.num_of_philo)
 	{
@@ -75,7 +75,7 @@ int	_init_philo(t_ctx *ctx)
 		ctx->philo[i].ctx = ctx;
 		if (pthread_mutex_init(&ctx->philo[i].philo_mutex, NULL) != 0)
 			return (destroy_philo(ctx, i),
-				put_error("last_meal_time mutex init failed"));
+				print_error("last_meal_time mutex init failed"));
 		i++;
 	}
 	return (SUCCESS);

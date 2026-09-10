@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-void	set_eat_count(t_philo *philo)
+void	add_eat_count(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->philo_mutex);
 	philo->eat_count++;

@@ -17,12 +17,12 @@ int	validate_args(char **argv);
 int	parse_args(int argc, char **argv, t_config *config)
 {
 	if ((argc != 5) && (argc != 6))
-		return (put_error("usage: ./philo n t_die t_eat t_sleep [n_meals]"));
+		return (print_error("usage: ./philo n t_die t_eat t_sleep [n_meals]"));
 	if (validate_args(argv) == FAILURE)
-		return (put_error("arguments must be positive integers"));
+		return (print_error("arguments must be positive integers"));
 	config->num_of_philo = ft_atoi(argv[1]);
 	if (config->num_of_philo == 0)
-		return (put_error("number of philosophers must not be 0"));
+		return (print_error("number of philosophers must not be 0"));
 	config->time_to_die = ft_atoi(argv[2]);
 	config->time_to_eat = ft_atoi(argv[3]);
 	config->time_to_sleep = ft_atoi(argv[4]);

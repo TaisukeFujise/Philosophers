@@ -53,7 +53,7 @@ int	create_philo_threads(t_ctx *ctx)
 		{
 			set_dead(ctx);
 			join_philo_threads(ctx, i);
-			return (put_error("pthread_create failed"));
+			return (print_error("pthread_create failed"));
 		}
 		i++;
 	}
@@ -70,7 +70,7 @@ int	join_philo_threads(t_ctx *ctx, int count)
 	while (i < count)
 	{
 		if (pthread_join(ctx->philo[i].tid, NULL) != 0)
-			result = put_error("pthread_join failed");
+			result = print_error("pthread_join failed");
 		i++;
 	}
 	return (result);
