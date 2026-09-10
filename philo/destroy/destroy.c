@@ -38,7 +38,7 @@ void	destroy_philo(t_ctx *ctx, int count)
 	i = 0;
 	while (i < count)
 	{
-		pthread_mutex_destroy(&ctx->philo[i].last_meal_time_mutex);
+		pthread_mutex_destroy(&ctx->philo[i].philo_mutex);
 		i++;
 	}
 	free(ctx->philo);

@@ -22,6 +22,9 @@ SRCS:=main.c\
 	utils/ft_strlen.c\
 	init/init.c\
 	init/parse.c\
+	state/dead.c\
+	state/philo_state.c\
+	state/print.c\
 	destroy/destroy.c
 
 HEADERS:=include/philo.h

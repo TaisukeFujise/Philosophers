@@ -73,7 +73,7 @@ int	_init_philo(t_ctx *ctx)
 		ctx->philo[i].eat_count = 0;
 		ctx->philo[i].last_meal_time = 0;
 		ctx->philo[i].ctx = ctx;
-		if (pthread_mutex_init(&ctx->philo[i].last_meal_time_mutex, NULL) != 0)
+		if (pthread_mutex_init(&ctx->philo[i].philo_mutex, NULL) != 0)
 			return (destroy_philo(ctx, i),
 				put_error("last_meal_time mutex init failed"));
 		i++;

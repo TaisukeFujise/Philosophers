@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:25 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/11 04:49:23 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/11 06:32:51 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_philo
 	int					philo_id;
 	int					eat_count;
 	int					last_meal_time;
-	pthread_mutex_t		last_meal_time_mutex;
+	pthread_mutex_t		philo_mutex;
 	t_ctx				*ctx;
 }						t_philo;
 
@@ -77,11 +77,24 @@ int						init_ctx(t_ctx *ctx);
 /* parse.c */
 int						parse_args(int argc, char **argv, t_config *config);
 
-// <destory>
+// <state>
+/* dead.c */
+void					set_dead(t_ctx *ctx);
+bool					get_dead(t_ctx *ctx);
+/* philo_state.c */
+void					set_eat_count(t_philo *philo);
+int						get_eat_count(t_philo *philo);
+void					set_last_meal_time(t_philo *philo, int time_ms);
+int						get_last_meal_time(t_philo *philo);
+/* print.c */
+void					print_status(t_philo *philo, const char *status);
+void					print_death(t_philo *philo);
+
+// <destroy>
 /* destroy.c */
-void	destroy_mutex(t_ctx *ctx);
-void	destroy_fork_mutex(t_ctx *ctx, int count);
-void	destroy_philo(t_ctx *ctx, int count);
-void	destroy_ctx(t_ctx *ctx);
+void					destroy_mutex(t_ctx *ctx);
+void					destroy_fork_mutex(t_ctx *ctx, int count);
+void					destroy_philo(t_ctx *ctx, int count);
+void					destroy_ctx(t_ctx *ctx);
 
 #endif
