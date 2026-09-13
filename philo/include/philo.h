@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:25 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/13 22:05:22 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/14 01:17:17 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,11 @@ bool					get_dead(t_ctx *ctx);
 /* philo_state.c */
 void					add_eat_count(t_philo *philo);
 int						get_eat_count(t_philo *philo);
-void					set_last_meal_time(t_philo *philo, int time_ms);
-int						get_last_meal_time(t_philo *philo);
+void					set_last_meal_time(t_philo *philo, long time_ms);
+long					get_last_meal_time(t_philo *philo);
 /* print.c */
 void					print_status(t_philo *philo, const char *status);
-void					print_death(t_philo *philo);
+void					report_death(t_philo *philo);
 
 // <destroy>
 /* destroy.c */
@@ -98,5 +98,9 @@ void					destroy_mutex(t_ctx *ctx);
 void					destroy_fork_mutex(t_ctx *ctx, int count);
 void					destroy_philo(t_ctx *ctx, int count);
 void					destroy_ctx(t_ctx *ctx);
+
+// <action>
+/* philo_action.c */
+void					*philo_action(void *arg);
 
 #endif

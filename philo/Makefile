@@ -6,7 +6,7 @@
 #    By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/27 04:38:53 by tafujise          #+#    #+#              #
-#    Updated: 2026/09/11 04:39:24 by tafujise         ###   ########.fr        #
+#    Updated: 2026/09/14 00:54:00 by tafujise         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,14 @@ SRCS:=main.c\
 	utils/ft_isdigit.c\
 	utils/ft_isspace.c\
 	utils/ft_strlen.c\
+	utils/time.c\
 	init/init.c\
 	init/parse.c\
 	state/dead.c\
 	state/philo_state.c\
 	state/print.c\
-	destroy/destroy.c
+	destroy/destroy.c\
+	action/philo_action.c\
 
 HEADERS:=include/philo.h
 

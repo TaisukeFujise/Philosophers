@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 06:39:42 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/13 22:26:44 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/14 01:13:03 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ void	print_status(t_philo *philo, const char *status)
 	pthread_mutex_unlock(&philo->ctx->print_mutex);
 }
 
-void	print_death(t_philo *philo)
+void	report_death(t_philo *philo)
 {
 	long	timestamp_in_ms;
 
 	pthread_mutex_lock(&philo->ctx->print_mutex);
+	set_dead(philo->ctx);
 	timestamp_in_ms = get_time_ms() - philo->ctx->start_time;
 	printf("%ld %d %s\n", timestamp_in_ms, philo->philo_id, "died");
 	pthread_mutex_unlock(&philo->ctx->print_mutex);
