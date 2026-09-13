@@ -25,6 +25,15 @@
 # define SUCCESS 0
 # define FAILURE -1
 
+/*
+	wait_until() が 1 回の usleep に渡す上限 (マイクロ秒)。
+	get_time_ms() の分解能が 1ms なので、それより長く寝ても
+	締切の判定精度は上がらない。調整用の値ではなく時計の仕様から決まる。
+	usleep に 1,000,000 以上を渡したときの挙動は POSIX 上未定義だが、
+	この上限により構造的に到達しない。
+*/
+# define WAIT_STEP_US 1000
+
 typedef struct s_config
 {
 	int					num_of_philo;

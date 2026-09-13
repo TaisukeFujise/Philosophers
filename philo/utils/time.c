@@ -25,13 +25,15 @@ long	get_time_ms(void)
 void	wait_until(long deadline_ms)
 {
 	long	cur_time_ms;
-	long	duration;
+	long	duration_us;
 
 	cur_time_ms = get_time_ms();
 	while (cur_time_ms < deadline_ms)
 	{
-		duration = deadline_ms - cur_time_ms;
-		usleep((useconds_t)(1000 * duration));
+		duration_us = (deadline_ms - cur_time_ms) * 1000;
+		if (duration_us > WAIT_STEP_US)
+			duration_us = WAIT_STEP_US;
+		usleep((useconds_t)duration_us);
 		cur_time_ms = get_time_ms();
 	}
 }
