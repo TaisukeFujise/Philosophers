@@ -6,7 +6,7 @@
 #    By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/27 04:38:53 by tafujise          #+#    #+#              #
-#    Updated: 2026/09/14 00:54:00 by tafujise         ###   ########.fr        #
+#    Updated: 2026/09/14 01:32:31 by tafujise         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS:=main.c\
 	state/philo_state.c\
 	state/print.c\
 	destroy/destroy.c\
+	action/monitor.c\
 	action/philo_action.c\
 
 HEADERS:=include/philo.h

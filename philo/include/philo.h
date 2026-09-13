@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:25 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/14 01:17:17 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/14 01:48:03 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ struct					s_ctx
 // <utils>
 /* time.c */
 long					get_time_ms(void);
+void					wait_until(long deadline_ms);
 /* errors.c */
 int						print_error(const char *msg);
 /* ft_atoi.c */
@@ -100,6 +101,8 @@ void					destroy_philo(t_ctx *ctx, int count);
 void					destroy_ctx(t_ctx *ctx);
 
 // <action>
+/* monitor.c */
+void					monitor_loop(t_ctx *ctx);
 /* philo_action.c */
 void					*philo_action(void *arg);
 
