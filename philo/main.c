@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:21 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/13 21:19:49 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/13 22:26:56 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@ int		create_philo_threads(t_ctx *ctx);
 int		join_philo_threads(t_ctx *ctx, int count);
 
 /*
-	startを記録して、今の時刻との差分をとる。
 	monitorの実装
-	print関連
 */
 
 void	*philo_action(void *arg)

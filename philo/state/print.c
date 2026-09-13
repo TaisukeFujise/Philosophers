@@ -6,39 +6,40 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 06:39:42 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/11 07:25:09 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/13 22:26:44 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// ◦ timestamp_in_ms X has taken a fork
-// ◦ timestamp_in_ms X is eating
-// ◦ timestamp_in_ms X is sleeping
-// ◦ timestamp_in_ms X is thinking
-// ◦ timestamp_in_ms X died
-
+/*
+Following statements are print pattern.
+	- timestamp_in_ms X has taken a fork
+	- timestamp_in_ms X is eating
+	- timestamp_in_ms X is sleeping
+	- timestamp_in_ms X is thinking
+	- timestamp_in_ms X died
+*/
 #include "philo.h"
 
-void print_status(t_philo *philo, const char *status)
+void	print_status(t_philo *philo, const char *status)
 {
-	/* TODO */
-	(void)philo;
-	(void)status;
-	// int timestamp_in_ms;
+	long	timestamp_in_ms;
 
-	// pthread_mutex_lock(&philo->ctx->print_mutex);
-	// pthread_mutex_lock(&philo->ctx->dead_mutex);
-	// if (philo->ctx->is_dead) {
-	// 	print_death(philo);
-	// } else {
-	// 	timestamp_in_ms = gettimeofday(NULL, NULL);
-	// 	printf("%d %d %s", timestamp_in_ms, philo->philo_id, status);
-	// }
-	// pthread_mutex_unlock(&philo->ctx->dead_mutex);
-	// pthread_mutex_unlock(&philo->ctx->print_mutex);
+	pthread_mutex_lock(&philo->ctx->print_mutex);
+	pthread_mutex_lock(&philo->ctx->dead_mutex);
+	if (!philo->ctx->is_dead)
+	{
+		timestamp_in_ms = get_time_ms();
+		printf("%d %d %s\n", timestamp_in_ms, philo->philo_id, status);
+	}
+	pthread_mutex_unlock(&philo->ctx->dead_mutex);
+	pthread_mutex_unlock(&philo->ctx->print_mutex);
 }
 
-void print_death(t_philo *philo)
+void	print_death(t_philo *philo)
 {
-	(void)philo;
-	/* TODO */
+	long	timestamp_in_ms;
+
+	pthread_mutex_lock(&philo->ctx->print_mutex);
+	printf("%d %d %s\n", timestamp_in_ms, philo->philo_id, "died");
+	pthread_mutex_unlock(&philo->ctx->print_mutex);
 }
