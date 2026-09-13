@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:25 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/11 06:32:51 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/13 22:05:22 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_philo
 	pthread_t			tid;
 	int					philo_id;
 	int					eat_count;
-	int					last_meal_time;
+	long				last_meal_time;
 	pthread_mutex_t		philo_mutex;
 	t_ctx				*ctx;
 }						t_philo;
@@ -58,6 +58,8 @@ struct					s_ctx
 };
 
 // <utils>
+/* time.c */
+long					get_time_ms(void);
 /* errors.c */
 int						print_error(const char *msg);
 /* ft_atoi.c */

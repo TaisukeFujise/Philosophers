@@ -6,14 +6,20 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:21 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/11 07:08:40 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/13 21:19:49 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	create_philo_threads(t_ctx *ctx);
-int	join_philo_threads(t_ctx *ctx, int count);
+int		create_philo_threads(t_ctx *ctx);
+int		join_philo_threads(t_ctx *ctx, int count);
+
+/*
+	startを記録して、今の時刻との差分をとる。
+	monitorの実装
+	print関連
+*/
 
 void	*philo_action(void *arg)
 {
@@ -36,8 +42,7 @@ int	main(int argc, char **argv)
 		return (destroy_ctx(&ctx), 1);
 	if (join_philo_threads(&ctx, ctx.config.num_of_philo) == FAILURE)
 		return (destroy_ctx(&ctx), 1);
-	usleep(1000000);
-	printf("happy");
+	printf("happy\n");
 	return (destroy_ctx(&ctx), 0);
 }
 

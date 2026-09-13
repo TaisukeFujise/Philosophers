@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 06:39:42 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/11 07:18:37 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/11 07:25:09 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 void print_status(t_philo *philo, const char *status)
 {
 	/* TODO */
+	(void)philo;
+	(void)status;
 	// int timestamp_in_ms;
 
 	// pthread_mutex_lock(&philo->ctx->print_mutex);
@@ -37,5 +39,6 @@ void print_status(t_philo *philo, const char *status)
 
 void print_death(t_philo *philo)
 {
+	(void)philo;
 	/* TODO */
 }
