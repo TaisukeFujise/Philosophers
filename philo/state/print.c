@@ -28,8 +28,8 @@ void	print_status(t_philo *philo, const char *status)
 	pthread_mutex_lock(&philo->ctx->dead_mutex);
 	if (!philo->ctx->is_dead)
 	{
-		timestamp_in_ms = get_time_ms();
-		printf("%d %d %s\n", timestamp_in_ms, philo->philo_id, status);
+		timestamp_in_ms = get_time_ms() - philo->ctx->start_time;
+		printf("%ld %d %s\n", timestamp_in_ms, philo->philo_id, status);
 	}
 	pthread_mutex_unlock(&philo->ctx->dead_mutex);
 	pthread_mutex_unlock(&philo->ctx->print_mutex);
@@ -40,6 +40,7 @@ void	print_death(t_philo *philo)
 	long	timestamp_in_ms;
 
 	pthread_mutex_lock(&philo->ctx->print_mutex);
-	printf("%d %d %s\n", timestamp_in_ms, philo->philo_id, "died");
+	timestamp_in_ms = get_time_ms() - philo->ctx->start_time;
+	printf("%ld %d %s\n", timestamp_in_ms, philo->philo_id, "died");
 	pthread_mutex_unlock(&philo->ctx->print_mutex);
 }

@@ -29,16 +29,16 @@ int	get_eat_count(t_philo *philo)
 	return (eat_count);
 }
 
-void	set_last_meal_time(t_philo *philo, int time_ms)
+void	set_last_meal_time(t_philo *philo, long time_ms)
 {
 	pthread_mutex_lock(&philo->philo_mutex);
 	philo->last_meal_time = time_ms;
 	pthread_mutex_unlock(&philo->philo_mutex);
 }
 
-int	get_last_meal_time(t_philo *philo)
+long	get_last_meal_time(t_philo *philo)
 {
-	int	last_meal_time;
+	long	last_meal_time;
 
 	pthread_mutex_lock(&philo->philo_mutex);
 	last_meal_time = philo->last_meal_time;
