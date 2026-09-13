@@ -6,18 +6,19 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 01:31:49 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/14 02:13:18 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/14 02:17:40 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 long	_get_min_meal_time(t_ctx *ctx);
-bool	_is_someone_dead(t_ctx *ctx);
+t_philo	*_find_dead_philo(t_ctx *ctx);
 
 void	monitor_loop(t_ctx *ctx)
 {
 	long	min_last_meal_time;
+	t_philo	*dead_philo;
 
 	// 全部のthreadのmin(last_meal_time) かつ eat_count != must_eat_countを探す
 	// last_meal_time + time_to_die = wait_time
@@ -36,8 +37,12 @@ void	monitor_loop(t_ctx *ctx)
 		if (min_last_meal_time == -1) // 全員満腹の場合
 			break ;
 		wait_until(min_last_meal_time + ctx->config.time_to_die);
-		if (_is_someone_dead(ctx))
+		dead_philo = _find_dead_philo(ctx);
+		if (dead_philo != NULL)
+		{
+			report_death(dead_philo);
 			break ;
+		}
 	}
 }
 
@@ -62,7 +67,7 @@ long	_get_min_meal_time(t_ctx *ctx)
 	return (min_last_meal_time);
 }
 
-bool	_is_someone_dead(t_ctx *ctx)
+t_philo	*_find_dead_philo(t_ctx *ctx)
 {
 	int	i;
 
@@ -72,12 +77,8 @@ bool	_is_someone_dead(t_ctx *ctx)
 		if (get_eat_count(&ctx->philo[i]) != ctx->config.must_eat_count
 			&& ctx->config.time_to_die <= get_time_ms()
 			- get_last_meal_time(&ctx->philo[i]))
-		{
-			break ;
-		}
+			return (&ctx->philo[i]);
 		i++;
 	}
-	if (i != ctx->config.num_of_philo)
-		return (true);
-	return (false);
+	return (NULL);
 }
