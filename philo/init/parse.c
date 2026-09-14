@@ -6,13 +6,13 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 20:56:38 by tafujise          #+#    #+#             */
-/*   Updated: 2026/03/01 23:59:54 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/14 21:52:01 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	validate_args(char **argv);
+static int	validate_args(char **argv);
 
 int	parse_args(int argc, char **argv, t_config *config)
 {
@@ -39,7 +39,7 @@ int	parse_args(int argc, char **argv, t_config *config)
 	- only plus number
 	- no 0 for a number_of_philosopher arg.
 */
-int	validate_args(char **argv)
+static int	validate_args(char **argv)
 {
 	int	i;
 	int	j;

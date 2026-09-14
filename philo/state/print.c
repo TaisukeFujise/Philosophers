@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 06:39:42 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/14 21:09:40 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/14 21:49:15 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Following statements are print pattern.
 
 static const char	*_status_msg(t_status status);
 
-void	print_status(t_philo *philo, const char *status)
+void	print_status(t_philo *philo, t_status status)
 {
 	long	timestamp_in_ms;
 

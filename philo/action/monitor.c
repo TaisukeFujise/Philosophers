@@ -6,14 +6,14 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 01:31:49 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/14 20:22:29 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/14 21:50:26 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-long	_get_min_meal_time(t_ctx *ctx);
-t_philo	*_find_dead_philo(t_ctx *ctx);
+static long		_get_min_meal_time(t_ctx *ctx);
+static t_philo	*_find_dead_philo(t_ctx *ctx);
 
 void	monitor_loop(t_ctx *ctx)
 {
@@ -35,7 +35,7 @@ void	monitor_loop(t_ctx *ctx)
 	}
 }
 
-long	_get_min_meal_time(t_ctx *ctx)
+static long	_get_min_meal_time(t_ctx *ctx)
 {
 	int		i;
 	long	min_last_meal_time;
@@ -56,7 +56,7 @@ long	_get_min_meal_time(t_ctx *ctx)
 	return (min_last_meal_time);
 }
 
-t_philo	*_find_dead_philo(t_ctx *ctx)
+static t_philo	*_find_dead_philo(t_ctx *ctx)
 {
 	int	i;
 

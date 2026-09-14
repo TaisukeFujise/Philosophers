@@ -6,15 +6,15 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 20:57:42 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/13 22:01:32 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/14 21:50:52 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	_init_mutex(t_ctx *ctx);
-int	_init_fork_mutex(t_ctx *ctx);
-int	_init_philo(t_ctx *ctx);
+static int	_init_mutex(t_ctx *ctx);
+static int	_init_fork_mutex(t_ctx *ctx);
+static int	_init_philo(t_ctx *ctx);
 
 int	init_ctx(t_ctx *ctx)
 {

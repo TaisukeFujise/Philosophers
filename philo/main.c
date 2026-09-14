@@ -6,14 +6,14 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:21 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/14 20:19:43 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/14 21:22:22 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	_create_philo_threads(t_ctx *ctx);
-int	_join_philo_threads(t_ctx *ctx, int count);
+static int	_create_philo_threads(t_ctx *ctx);
+static int	_join_philo_threads(t_ctx *ctx, int count);
 
 int	main(int argc, char **argv)
 {
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	return (destroy_ctx(&ctx), 0);
 }
 
-int	_create_philo_threads(t_ctx *ctx)
+static int	_create_philo_threads(t_ctx *ctx)
 {
 	int	i;
 
@@ -50,7 +50,7 @@ int	_create_philo_threads(t_ctx *ctx)
 	return (SUCCESS);
 }
 
-int	_join_philo_threads(t_ctx *ctx, int count)
+static int	_join_philo_threads(t_ctx *ctx, int count)
 {
 	int	i;
 	int	result;
