@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:25 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/14 21:00:33 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/15 02:47:42 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_philo
 {
 	pthread_t			tid;
 	int					philo_id;
+	int					left;
+	int					right;
 	int					eat_count;
 	long				last_meal_time;
 	pthread_mutex_t		philo_mutex;
@@ -101,6 +103,11 @@ long					get_last_meal_time(t_philo *philo);
 /* print.c */
 void					print_status(t_philo *philo, t_status status);
 void					report_death(t_philo *philo);
+/* fork.c */
+void					take_fork(t_philo *philo, int fork_id);
+void					put_fork(t_philo *philo, int fork_id);
+void					take_both_forks(t_philo *philo);
+void					put_both_forks(t_philo *philo);
 
 // <destroy>
 /* destroy.c */

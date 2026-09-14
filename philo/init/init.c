@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 20:57:42 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/14 21:50:52 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/15 02:43:34 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	_init_philo(t_ctx *ctx)
 	while (i < ctx->config.num_of_philo)
 	{
 		ctx->philo[i].philo_id = i + 1;
+		ctx->philo[i].left = i;
+		ctx->philo[i].right = (i + 1) % (ctx->config.num_of_philo);
 		ctx->philo[i].eat_count = 0;
 		ctx->philo[i].last_meal_time = ctx->start_time;
 		ctx->philo[i].ctx = ctx;
