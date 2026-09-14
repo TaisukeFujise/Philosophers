@@ -15,7 +15,6 @@ NAME:=philo
 
 SRCS:=main.c\
 	utils/errors.c\
-	utils/ft_atoi.c\
 	utils/ft_atol.c\
 	utils/ft_isdigit.c\
 	utils/ft_isspace.c\

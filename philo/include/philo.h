@@ -74,8 +74,6 @@ long					get_time_ms(void);
 void					wait_until(long deadline_ms);
 /* errors.c */
 int						print_error(const char *msg);
-/* ft_atoi.c */
-int						ft_atoi(const char *nptr);
 /* ft_atol.c */
 long					ft_atol(char *nptr);
 /* ft_isdigit.c */
@@ -101,7 +99,7 @@ int						get_eat_count(t_philo *philo);
 void					set_last_meal_time(t_philo *philo, long time_ms);
 long					get_last_meal_time(t_philo *philo);
 /* print.c */
-void					print_status(t_philo *philo, const char *status);
+void					print_status(t_philo *philo, t_status status);
 void					report_death(t_philo *philo);
 
 // <destroy>

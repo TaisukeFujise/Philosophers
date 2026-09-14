@@ -13,21 +13,20 @@
 #include "philo.h"
 
 static int	validate_args(char **argv);
+static bool	_is_valid_number(char *arg);
 
 int	parse_args(int argc, char **argv, t_config *config)
 {
 	if ((argc != 5) && (argc != 6))
 		return (print_error("usage: ./philo n t_die t_eat t_sleep [n_meals]"));
 	if (validate_args(argv) == FAILURE)
-		return (print_error("arguments must be positive integers"));
-	config->num_of_philo = ft_atoi(argv[1]);
-	if (config->num_of_philo == 0)
-		return (print_error("number of philosophers must not be 0"));
-	config->time_to_die = ft_atoi(argv[2]);
-	config->time_to_eat = ft_atoi(argv[3]);
-	config->time_to_sleep = ft_atoi(argv[4]);
+		return (print_error("arguments must be integers in [1, INT_MAX]"));
+	config->num_of_philo = (int)ft_atol(argv[1]);
+	config->time_to_die = (int)ft_atol(argv[2]);
+	config->time_to_eat = (int)ft_atol(argv[3]);
+	config->time_to_sleep = (int)ft_atol(argv[4]);
 	if (argc == 6)
-		config->must_eat_count = ft_atoi(argv[5]);
+		config->must_eat_count = (int)ft_atol(argv[5]);
 	else
 		config->must_eat_count = -1;
 	return (SUCCESS);
@@ -37,24 +36,40 @@ int	parse_args(int argc, char **argv, t_config *config)
 	validation requirements
 	- only number
 	- only plus number
-	- no 0 for a number_of_philosopher arg.
+	- no 0 for every arg.
+	- INT_MAX or less
 */
 static int	validate_args(char **argv)
 {
 	int	i;
-	int	j;
 
 	i = 1;
 	while (argv[i])
 	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if (ft_isdigit(argv[i][j]) == false)
-				return (FAILURE);
-			j++;
-		}
+		if (_is_valid_number(argv[i]) == false)
+			return (FAILURE);
 		i++;
 	}
 	return (SUCCESS);
+}
+
+static bool	_is_valid_number(char *arg)
+{
+	long	value;
+	int		i;
+
+	if (arg[0] == '\0')
+		return (false);
+	i = 0;
+	while (arg[i])
+	{
+		if (ft_isdigit(arg[i]) == false)
+			return (false);
+		i++;
+	}
+	errno = 0;
+	value = ft_atol(arg);
+	if (errno == ERANGE || value < 1 || value > INT_MAX)
+		return (false);
+	return (true);
 }
