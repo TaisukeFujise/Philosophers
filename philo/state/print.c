@@ -45,7 +45,8 @@ void	report_death(t_philo *philo)
 	pthread_mutex_lock(&philo->ctx->print_mutex);
 	set_dead(philo->ctx);
 	timestamp_in_ms = get_time_ms() - philo->ctx->start_time;
-	printf("%ld %d %s\n", timestamp_in_ms, philo->philo_id, "died");
+	printf("%ld %d %s\n", timestamp_in_ms, philo->philo_id,
+		_status_msg(DIED));
 	pthread_mutex_unlock(&philo->ctx->print_mutex);
 }
 

@@ -38,7 +38,7 @@ static void	_philo_single(t_philo *philo)
 {
 	print_status(philo, THINKING);
 	take_fork(philo, 0);
-	wait_until(philo->last_meal_time + philo->ctx->config.time_to_die);
+	wait_until(get_last_meal_time(philo) + philo->ctx->config.time_to_die);
 	put_fork(philo, 0);
 }
 

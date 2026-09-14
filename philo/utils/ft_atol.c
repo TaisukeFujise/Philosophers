@@ -55,12 +55,3 @@ static long	_consume_symbol(char **nptr)
 	}
 	return (1);
 }
-
-// #include <errno.h>
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char *str = "-0";
-// 	printf("%ld\n", ft_atol(str));
-// }

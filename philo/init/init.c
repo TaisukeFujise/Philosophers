@@ -30,7 +30,7 @@ int	init_ctx(t_ctx *ctx)
 	return (SUCCESS);
 }
 
-int	_init_mutex(t_ctx *ctx)
+static int	_init_mutex(t_ctx *ctx)
 {
 	if (pthread_mutex_init(&ctx->dead_mutex, NULL) != 0)
 		return (print_error("dead_mutex init failed"));
@@ -40,7 +40,7 @@ int	_init_mutex(t_ctx *ctx)
 	return (SUCCESS);
 }
 
-int	_init_fork_mutex(t_ctx *ctx)
+static int	_init_fork_mutex(t_ctx *ctx)
 {
 	int	i;
 
@@ -59,7 +59,7 @@ int	_init_fork_mutex(t_ctx *ctx)
 	return (SUCCESS);
 }
 
-int	_init_philo(t_ctx *ctx)
+static int	_init_philo(t_ctx *ctx)
 {
 	int	i;
 
