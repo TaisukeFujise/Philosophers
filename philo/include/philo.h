@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:25 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/14 01:48:03 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/14 21:00:33 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@
 # define SUCCESS 0
 # define FAILURE -1
 
-/*
-	wait_until() が 1 回の usleep に渡す上限 (マイクロ秒)。
-	get_time_ms() の分解能が 1ms なので、それより長く寝ても
-	締切の判定精度は上がらない。調整用の値ではなく時計の仕様から決まる。
-	usleep に 1,000,000 以上を渡したときの挙動は POSIX 上未定義だが、
-	この上限により構造的に到達しない。
-*/
 # define WAIT_STEP_US 1000
 
 typedef struct s_config
@@ -65,6 +58,15 @@ struct					s_ctx
 	pthread_mutex_t		*fork_mutex;
 	t_philo				*philo;
 };
+
+typedef enum e_status
+{
+	TAKE_FORK,
+	EATING,
+	SLEEPING,
+	THINKING,
+	DIED,
+}						t_status;
 
 // <utils>
 /* time.c */

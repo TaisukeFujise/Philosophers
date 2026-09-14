@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:21 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/14 01:57:42 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/09/14 20:19:43 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 int	_create_philo_threads(t_ctx *ctx);
 int	_join_philo_threads(t_ctx *ctx, int count);
-
-/*
-	monitorの実装
-*/
 
 int	main(int argc, char **argv)
 {
@@ -32,7 +28,6 @@ int	main(int argc, char **argv)
 	monitor_loop(&ctx);
 	if (_join_philo_threads(&ctx, ctx.config.num_of_philo) == FAILURE)
 		return (destroy_ctx(&ctx), 1);
-	printf("happy\n");
 	return (destroy_ctx(&ctx), 0);
 }
 
