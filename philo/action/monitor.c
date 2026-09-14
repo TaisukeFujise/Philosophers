@@ -45,10 +45,12 @@ static long	_get_min_meal_time(t_ctx *ctx)
 	min_last_meal_time = LONG_MAX;
 	while (i < ctx->config.num_of_philo)
 	{
-		last_meal_time = get_last_meal_time(&ctx->philo[i]);
-		if (get_eat_count(&ctx->philo[i]) != ctx->config.must_eat_count
-			&& last_meal_time < min_last_meal_time)
-			min_last_meal_time = last_meal_time;
+		if (!is_full(&ctx->philo[i]))
+		{
+			last_meal_time = get_last_meal_time(&ctx->philo[i]);
+			if (last_meal_time < min_last_meal_time)
+				min_last_meal_time = last_meal_time;
+		}
 		i++;
 	}
 	if (min_last_meal_time == LONG_MAX)
@@ -63,7 +65,7 @@ static t_philo	*_find_dead_philo(t_ctx *ctx)
 	i = 0;
 	while (i < ctx->config.num_of_philo)
 	{
-		if (get_eat_count(&ctx->philo[i]) != ctx->config.must_eat_count
+		if (!is_full(&ctx->philo[i])
 			&& ctx->config.time_to_die <= get_time_ms()
 			- get_last_meal_time(&ctx->philo[i]))
 			return (&ctx->philo[i]);

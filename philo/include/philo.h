@@ -100,6 +100,7 @@ void					add_eat_count(t_philo *philo);
 int						get_eat_count(t_philo *philo);
 void					set_last_meal_time(t_philo *philo, long time_ms);
 long					get_last_meal_time(t_philo *philo);
+bool					is_full(t_philo *philo);
 /* print.c */
 void					print_status(t_philo *philo, t_status status);
 void					report_death(t_philo *philo);

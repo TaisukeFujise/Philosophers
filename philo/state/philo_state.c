@@ -45,3 +45,13 @@ long	get_last_meal_time(t_philo *philo)
 	pthread_mutex_unlock(&philo->philo_mutex);
 	return (last_meal_time);
 }
+
+bool	is_full(t_philo *philo)
+{
+	int	must_eat_count;
+
+	must_eat_count = philo->ctx->config.must_eat_count;
+	if (must_eat_count <= 0)
+		return (false);
+	return (must_eat_count <= get_eat_count(philo));
+}
