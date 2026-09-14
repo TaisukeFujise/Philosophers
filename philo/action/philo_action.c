@@ -44,18 +44,14 @@ static void	_philo_single(t_philo *philo)
 
 static void	_philo_multiple(t_philo *philo)
 {
+	if (philo->philo_id % 2 == 0)
+		wait_until(get_time_ms() + philo->ctx->config.time_to_eat);
 	while (!get_dead(philo->ctx))
 	{
 		if (is_full(philo))
 			break ;
-		take_both_forks(philo);
-		set_last_meal_time(philo, get_time_ms());
-		print_status(philo, EATING);
-		wait_until(get_time_ms() + philo->ctx->config.time_to_eat);
-		add_eat_count(philo);
-		put_both_forks(philo);
-		print_status(philo, SLEEPING);
-		wait_until(get_time_ms() + philo->ctx->config.time_to_sleep);
-		print_status(philo, THINKING);
+		philo_eat(philo);
+		philo_sleep(philo);
+		philo_think(philo);
 	}
 }

@@ -27,6 +27,7 @@ SRCS:=main.c\
 	state/print.c\
 	state/fork.c\
 	destroy/destroy.c\
+	action/activity.c\
 	action/monitor.c\
 	action/philo_action.c\
 
