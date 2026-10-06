@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:21 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/14 21:22:22 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/06 17:32:43 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 static int	_create_philo_threads(t_ctx *ctx);
 static int	_join_philo_threads(t_ctx *ctx, int count);
 
+/*
+ */
 int	main(int argc, char **argv)
 {
 	t_ctx	ctx;
