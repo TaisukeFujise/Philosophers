@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 20:57:42 by tafujise          #+#    #+#             */
-/*   Updated: 2026/10/06 18:05:14 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/06 23:25:31 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	init_ctx(t_ctx *ctx)
 		return (FAILURE);
 	if (_init_fork_mutex(ctx) == FAILURE)
 		return (destroy_dead_mutex(ctx), FAILURE);
-	ctx->start_time = get_time_ms();
+	ctx->start_time = get_time_us();
 	if (_init_philo(ctx) == FAILURE)
 		return (destroy_dead_mutex(ctx), destroy_fork_mutex(ctx,
 				ctx->config.num_of_philo), FAILURE);

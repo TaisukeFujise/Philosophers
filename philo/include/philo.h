@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:25 by tafujise          #+#    #+#             */
-/*   Updated: 2026/10/06 17:45:38 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/06 23:34:31 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 typedef struct s_config
 {
 	int					num_of_philo;
-	int					time_to_die;
-	int					time_to_eat;
-	int					time_to_sleep;
+	long				time_to_die;
+	long				time_to_eat;
+	long				time_to_sleep;
 	int					must_eat_count;
 }						t_config;
 
@@ -71,9 +71,9 @@ typedef enum e_status
 
 // <utils>
 /* time.c */
-long					get_time_ms(void);
-void					wait_until(long deadline_ms);
-long					get_think_ms(t_config *config);
+long					get_time_us(void);
+void					wait_until(long deadline_us);
+long					get_think_us(t_config *config);
 /* errors.c */
 int						print_error(const char *msg);
 /* ft_atol.c */
@@ -98,7 +98,7 @@ bool					get_dead(t_ctx *ctx);
 /* philo_state.c */
 void					add_eat_count(t_philo *philo);
 int						get_eat_count(t_philo *philo);
-void					set_last_meal_time(t_philo *philo, long time_ms);
+void					set_last_meal_time(t_philo *philo, long time_us);
 long					get_last_meal_time(t_philo *philo);
 bool					is_full(t_philo *philo);
 /* print.c */

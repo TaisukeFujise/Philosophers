@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 06:31:20 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/11 06:48:12 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/06 23:37:28 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	get_eat_count(t_philo *philo)
 	return (eat_count);
 }
 
-void	set_last_meal_time(t_philo *philo, long time_ms)
+void	set_last_meal_time(t_philo *philo, long time_us)
 {
 	pthread_mutex_lock(&philo->philo_mutex);
-	philo->last_meal_time = time_ms;
+	philo->last_meal_time = time_us;
 	pthread_mutex_unlock(&philo->philo_mutex);
 }
 

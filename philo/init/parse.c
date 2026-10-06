@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 20:56:38 by tafujise          #+#    #+#             */
-/*   Updated: 2026/10/06 17:40:33 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/06 23:37:47 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	parse_args(int argc, char **argv, t_config *config)
 	if (_validate_args(argv) == FAILURE)
 		return (print_error("arguments must be integers in [1, INT_MAX]"));
 	config->num_of_philo = (int)ft_atol(argv[1]);
-	config->time_to_die = (int)ft_atol(argv[2]);
-	config->time_to_eat = (int)ft_atol(argv[3]);
-	config->time_to_sleep = (int)ft_atol(argv[4]);
+	config->time_to_die = ft_atol(argv[2]) * 1000;
+	config->time_to_eat = ft_atol(argv[3]) * 1000;
+	config->time_to_sleep = ft_atol(argv[4]) * 1000;
 	if (argc == 6)
 		config->must_eat_count = (int)ft_atol(argv[5]);
 	else
