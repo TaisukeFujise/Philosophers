@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:21 by tafujise          #+#    #+#             */
-/*   Updated: 2026/10/06 17:39:03 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/06 18:04:40 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	_create_philo_threads(t_ctx *ctx)
 	while (i < ctx->config.num_of_philo)
 	{
 		if (pthread_create(&ctx->philo[i].tid, NULL, philo_action,
-				&ctx->philo[i]) != 0)
+				&ctx->philo[i]))
 		{
 			set_dead(ctx);
 			_join_philo_threads(ctx, i);
@@ -63,7 +63,7 @@ static int	_join_philo_threads(t_ctx *ctx, int count)
 	result = SUCCESS;
 	while (i < count)
 	{
-		if (pthread_join(ctx->philo[i].tid, NULL) != 0)
+		if (pthread_join(ctx->philo[i].tid, NULL))
 			result = print_error("pthread_join failed");
 		i++;
 	}

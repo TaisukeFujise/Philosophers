@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:25 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/15 02:47:42 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/06 17:45:38 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ struct					s_ctx
 	long				start_time;
 	bool				is_dead;
 	pthread_mutex_t		dead_mutex;
-	pthread_mutex_t		print_mutex;
 	pthread_mutex_t		*fork_mutex;
 	t_philo				*philo;
 };
@@ -113,7 +112,7 @@ void					put_both_forks(t_philo *philo);
 
 // <destroy>
 /* destroy.c */
-void					destroy_mutex(t_ctx *ctx);
+void					destroy_dead_mutex(t_ctx *ctx);
 void					destroy_fork_mutex(t_ctx *ctx, int count);
 void					destroy_philo(t_ctx *ctx, int count);
 void					destroy_ctx(t_ctx *ctx);
