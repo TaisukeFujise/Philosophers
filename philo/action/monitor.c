@@ -13,12 +13,11 @@
 #include "philo.h"
 
 static long		_get_min_meal_time(t_ctx *ctx);
-static t_philo	*_find_dead_philo(t_ctx *ctx);
+static bool		_check_all_deaths(t_ctx *ctx);
 
 void	monitor_loop(t_ctx *ctx)
 {
 	long	min_last_meal_time;
-	t_philo	*dead_philo;
 
 	while (1)
 	{
@@ -26,12 +25,8 @@ void	monitor_loop(t_ctx *ctx)
 		if (min_last_meal_time == -1)
 			break ;
 		wait_until(min_last_meal_time + ctx->config.time_to_die);
-		dead_philo = _find_dead_philo(ctx);
-		if (dead_philo != NULL)
-		{
-			report_death(dead_philo);
+		if (_check_all_deaths(ctx))
 			break ;
-		}
 	}
 }
 
@@ -58,18 +53,16 @@ static long	_get_min_meal_time(t_ctx *ctx)
 	return (min_last_meal_time);
 }
 
-static t_philo	*_find_dead_philo(t_ctx *ctx)
+static bool	_check_all_deaths(t_ctx *ctx)
 {
 	int	i;
 
 	i = 0;
 	while (i < ctx->config.num_of_philo)
 	{
-		if (!is_full(&ctx->philo[i])
-			&& ctx->config.time_to_die <= get_time_ms()
-			- get_last_meal_time(&ctx->philo[i]))
-			return (&ctx->philo[i]);
+		if (check_death(&ctx->philo[i]))
+			return (true);
 		i++;
 	}
-	return (NULL);
+	return (false);
 }

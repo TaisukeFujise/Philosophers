@@ -103,7 +103,7 @@ long					get_last_meal_time(t_philo *philo);
 bool					is_full(t_philo *philo);
 /* print.c */
 void					print_status(t_philo *philo, t_status status);
-void					report_death(t_philo *philo);
+bool					check_death(t_philo *philo);
 /* fork.c */
 void					take_fork(t_philo *philo, int fork_id);
 void					put_fork(t_philo *philo, int fork_id);
