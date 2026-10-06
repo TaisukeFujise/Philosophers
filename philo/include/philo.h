@@ -74,6 +74,7 @@ typedef enum e_status
 /* time.c */
 long					get_time_ms(void);
 void					wait_until(long deadline_ms);
+long					get_think_ms(t_config *config);
 /* errors.c */
 int						print_error(const char *msg);
 /* ft_atol.c */

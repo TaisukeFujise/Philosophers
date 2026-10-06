@@ -37,3 +37,14 @@ void	wait_until(long deadline_ms)
 		cur_time_ms = get_time_ms();
 	}
 }
+
+long	get_think_ms(t_config *config)
+{
+	long	think_ms;
+
+	think_ms = (config->time_to_die - config->time_to_eat
+			- config->time_to_sleep) / 2;
+	if (think_ms < 0)
+		return (0);
+	return (think_ms);
+}
