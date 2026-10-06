@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/11 06:39:42 by tafujise          #+#    #+#             */
-/*   Updated: 2026/10/06 23:27:14 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/07 00:26:39 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ bool	check_death(t_philo *philo)
 	if (is_dead)
 	{
 		philo->ctx->is_dead = true;
-		printf("%ld %d %s\n", now - philo->ctx->start_time, philo->philo_id,
+		printf("%ld %d %s\n", (now - philo->ctx->start_time) / 1000, philo->philo_id,
 			_status_msg(DIED));
 	}
 	pthread_mutex_unlock(&philo->ctx->dead_mutex);
