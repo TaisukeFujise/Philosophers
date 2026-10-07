@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 20:56:38 by tafujise          #+#    #+#             */
-/*   Updated: 2026/10/06 23:37:47 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/07 22:55:01 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	_validate_args(char **argv);
 static bool	_is_valid_number(char *arg);
-
+static void	_set_schedule(t_config *config);
 int	parse_args(int argc, char **argv, t_config *config)
 {
 	if ((argc != 5) && (argc != 6))
@@ -29,6 +29,7 @@ int	parse_args(int argc, char **argv, t_config *config)
 		config->must_eat_count = (int)ft_atol(argv[5]);
 	else
 		config->must_eat_count = -1;
+	_set_schedule(config);
 	return (SUCCESS);
 }
 
@@ -72,4 +73,22 @@ static bool	_is_valid_number(char *arg)
 	if (errno == ERANGE || value < 1 || value > INT_MAX)
 		return (false);
 	return (true);
+}
+
+static void	_set_schedule(t_config *config)
+{
+	if (config->num_of_philo == 1)
+	{
+		config->cycle_us = 0;
+		return ;
+	}
+	if (config->num_of_philo % 2 == 0)
+	{
+		config->cycle_us = 2 * config->time_to_eat;
+	}
+	else
+	{
+		config->cycle_us = 2 * config->time_to_eat + (config->time_to_eat)
+			/ (config->num_of_philo / 2);
+	}
 }

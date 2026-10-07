@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:25 by tafujise          #+#    #+#             */
-/*   Updated: 2026/10/06 23:34:31 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/07 22:58:27 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define FAILURE -1
 
 # define WAIT_STEP_US 1000
+# define MAX(a, b) ((a) > (b) ? (a) : (b))
 
 typedef struct s_config
 {
@@ -34,6 +35,7 @@ typedef struct s_config
 	long				time_to_eat;
 	long				time_to_sleep;
 	int					must_eat_count;
+	long				cycle_us;
 }						t_config;
 
 typedef struct s_ctx	t_ctx;
