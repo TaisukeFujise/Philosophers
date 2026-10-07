@@ -40,13 +40,10 @@ void	wait_until(long deadline_us)
 
 long	get_think_us(t_config *config)
 {
-	long	think_us;
-	long	eat_time;
-	long	sleep_time;
+	long	busy_us;
 
-	eat_time = config->time_to_eat;
-	sleep_time = config->time_to_sleep;
-	think_us = MAX(config->cycle_us, eat_time + sleep_time) - eat_time
-		- sleep_time;
-	return (think_us);
+	busy_us = config->time_to_eat + config->time_to_sleep;
+	if (config->cycle_us <= busy_us)
+		return (0);
+	return (config->cycle_us - busy_us);
 }

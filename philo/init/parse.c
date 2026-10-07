@@ -15,6 +15,7 @@
 static int	_validate_args(char **argv);
 static bool	_is_valid_number(char *arg);
 static void	_set_schedule(t_config *config);
+
 int	parse_args(int argc, char **argv, t_config *config)
 {
 	if ((argc != 5) && (argc != 6))

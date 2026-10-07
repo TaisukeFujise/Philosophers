@@ -26,7 +26,6 @@
 # define FAILURE -1
 
 # define WAIT_STEP_US 1000
-# define MAX(a, b) ((a) > (b) ? (a) : (b))
 
 typedef struct s_config
 {
