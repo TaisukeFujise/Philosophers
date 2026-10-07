@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:25 by tafujise          #+#    #+#             */
-/*   Updated: 2026/10/07 22:58:27 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/07 23:01:47 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_philo
 	long				last_meal_time;
 	pthread_mutex_t		philo_mutex;
 	t_ctx				*ctx;
+	long				start_offset_us;
 }						t_philo;
 
 struct					s_ctx

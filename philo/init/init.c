@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/01 20:57:42 by tafujise          #+#    #+#             */
-/*   Updated: 2026/10/06 23:25:31 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/07 23:03:38 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ static int	_init_philo(t_ctx *ctx)
 {
 	int	i;
 
+	// ((philo_id - 1) * eat_time)
+	// % philo->ctx->config.cycle_us);
 	ctx->philo = malloc(sizeof(t_philo) * ctx->config.num_of_philo);
 	if (ctx->philo == NULL)
 		return (print_error("malloc failed: philosophers"));
@@ -72,6 +74,8 @@ static int	_init_philo(t_ctx *ctx)
 		ctx->philo[i].eat_count = 0;
 		ctx->philo[i].last_meal_time = ctx->start_time;
 		ctx->philo[i].ctx = ctx;
+		ctx->philo[i].start_offset_us = (i * ctx->config.time_to_eat)
+			% ctx->config.cycle_us;
 		if (pthread_mutex_init(&ctx->philo[i].philo_mutex, NULL))
 			return (destroy_philo(ctx, i),
 				print_error("last_meal_time mutex init failed"));
