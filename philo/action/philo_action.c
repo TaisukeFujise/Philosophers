@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/13 23:58:58 by tafujise          #+#    #+#             */
-/*   Updated: 2026/10/06 23:26:06 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/07 19:46:24 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void	_philo_single(t_philo *philo)
 
 static void	_philo_multiple(t_philo *philo)
 {
+	print_status(philo, THINKING);
 	if (philo->philo_id % 2 == 0)
 		wait_until(get_time_us() + philo->ctx->config.time_to_eat);
 	while (!get_dead(philo->ctx))
