@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 04:46:21 by tafujise          #+#    #+#             */
-/*   Updated: 2026/10/06 18:04:40 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/07 23:58:49 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@ static int	_create_philo_threads(t_ctx *ctx);
 static int	_join_philo_threads(t_ctx *ctx, int count);
 
 /*
-	./philo <num_of_philo> <time_to_die> <time_to_eat> <time_to_sleep> (<must_eat_times>)
+	./philo
+	- av[1]: num_of_philo
+	- av[2]: time_to_die
+	- av[3]: time_to_eat
+	- av[4]: time_to_sleep
+	- av[5]: must_eat_count(optional)
 	ex) ./philo 4 200 100 100
  */
 int	main(int argc, char **argv)

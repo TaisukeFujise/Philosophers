@@ -6,14 +6,14 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/14 01:31:49 by tafujise          #+#    #+#             */
-/*   Updated: 2026/09/14 21:50:26 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/07 23:55:33 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static long		_get_min_meal_time(t_ctx *ctx);
-static bool		_check_all_deaths(t_ctx *ctx);
+static long	_get_min_meal_time(t_ctx *ctx);
+static bool	_check_all_deaths(t_ctx *ctx);
 
 void	monitor_loop(t_ctx *ctx)
 {
