@@ -6,7 +6,7 @@
 /*   By: tafujise <tafujise@student.42.jp>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/13 00:39:52 by tafujise          #+#    #+#             */
-/*   Updated: 2026/10/07 22:34:40 by tafujise         ###   ########.fr       */
+/*   Updated: 2026/10/07 23:43:36 by tafujise         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,5 @@ long	get_think_us(t_config *config)
 	sleep_time = config->time_to_sleep;
 	think_us = MAX(config->cycle_us, eat_time + sleep_time) - eat_time
 		- sleep_time;
-	if (think_us < 0)
-		return (0);
 	return (think_us);
 }
