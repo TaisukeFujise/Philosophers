@@ -15,9 +15,8 @@
 void	philo_eat(t_philo *philo)
 {
 	take_both_forks(philo);
-	set_last_meal_time(philo, get_time_us());
-	print_status(philo, EATING);
-	wait_until(get_time_us() + philo->ctx->config.time_to_eat);
+	print_eating(philo);
+	wait_until(get_last_meal_time(philo) + philo->ctx->config.time_to_eat);
 	add_eat_count(philo);
 	put_both_forks(philo);
 }

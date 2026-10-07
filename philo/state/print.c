@@ -36,6 +36,19 @@ void	print_status(t_philo *philo, t_status status)
 	pthread_mutex_unlock(&philo->ctx->dead_mutex);
 }
 
+void	print_eating(t_philo *philo)
+{
+	long	now;
+
+	pthread_mutex_lock(&philo->ctx->dead_mutex);
+	now = get_time_us();
+	set_last_meal_time(philo, now);
+	if (!philo->ctx->is_dead)
+		printf("%ld %d %s\n", (now - philo->ctx->start_time) / 1000,
+			philo->philo_id, _status_msg(EATING));
+	pthread_mutex_unlock(&philo->ctx->dead_mutex);
+}
+
 bool	check_death(t_philo *philo)
 {
 	bool	is_dead;
